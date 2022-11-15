@@ -3,10 +3,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title">Input New Bet</string>
-    <string name="teamOne">Team One</string>
-    <string name="teamTwo">Team Two</string>
-    <string name="amountBet">Amount of Bet</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="this_is_definitely_not_home_fragment">This is definitely not Home Fragment</string>
+    <string name="your_best_friend_in_betting">Your Best Friend in Betting</string>
+    <string name="track_history">Track History</string>
+    <string name="view_stats">View Stats</string>
+    <string name="welcome_to_BetBuddy">Welcome to BetBuddy</string>
 </resources>

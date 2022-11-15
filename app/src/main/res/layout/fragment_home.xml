@@ -7,46 +7,51 @@
     tools:context=".ui.home.HomeFragment">
 
     <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Welcome to BetBuddy"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.324" />
-
-    <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="220dp"
-        android:layout_height="49dp"
+        android:layout_width="168dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="31dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Your Best Friend in Betting"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="261dp" />
+        android:text="@string/your_best_friend_in_betting"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_text" />
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="201dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="163dp"
+        android:layout_marginBottom="17dp"
+        android:ems="10"
+        android:text="@string/welcome_to_BetBuddy"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Track History"
-        tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="415dp" />
+        android:layout_marginStart="7dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/track_history"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Stats"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="472dp" />
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="262dp"
+        android:text="@string/view_stats"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
