@@ -10,19 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-/**
- * A simple {@link Fragment} subclass.
- * create an instance of this fragment.
- */
 public class fragment_addBet extends Track_History {
 
     private Button submit_button;
-
-
-
-    public fragment_addBet() {
-        // Required empty public constructor
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

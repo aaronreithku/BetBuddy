@@ -7,26 +7,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Track_History extends AppCompatActivity {
+public class add_bet extends AppCompatActivity {
 
-    private Button add_New_Bet_button;
+    private Button submit_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_track_history);
-        add_New_Bet_button = (Button) findViewById(R.id.button);
-        add_New_Bet_button.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_add_bet);
+        submit_button = (Button) findViewById(R.id.button);
+        submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openAddBet();
+                openTrackHistory();
             }
         });
-
     }
-
-    public void openAddBet() {
-        Intent intent = new Intent(this, add_bet.class);
+    public void openTrackHistory() {
+        Intent intent = new Intent(this, Track_History.class);
         startActivity(intent);
     }
 }

@@ -34,4 +34,7 @@ public class DashboardFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    public void radioButtonHandler(View view) {
+    }
 }
