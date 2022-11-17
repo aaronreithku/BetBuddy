@@ -27,9 +27,7 @@ public class MainActivity extends AppCompatActivity {
         view_stats_button = (Button) findViewById(R.id.button2);
         view_stats_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                openViewStats();
-            }
+            public void onClick(View view) { openViewStats(); }
         });
 
         }
