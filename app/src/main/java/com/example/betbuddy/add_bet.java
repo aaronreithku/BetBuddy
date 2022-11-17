@@ -74,10 +74,11 @@ public class add_bet extends AppCompatActivity {
             EditText text = (EditText) findViewById(checkDoneArray[i]);
             String value = text.getText().toString();
             String newBetError = "Error: One or more boxes empty";
+            TextView errorMessage = (TextView) findViewById(R.id.notDone);
             while (value == "") {
-                TextView errorMessage = (TextView) findViewById(R.id.notDone);
                 errorMessage.setText(newBetError);
             }
+            errorMessage.setText("");
         }
     }
 
