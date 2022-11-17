@@ -20,7 +20,19 @@ public class add_bet extends AppCompatActivity {
         setContentView(R.layout.activity_add_bet);
         spread_button = (Button) findViewById(R.id.betSpread);
         ML_button = (Button) findViewById(R.id.betMoneyline);
+        ML_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setPresetOdds();
+            }
+        });
         overUnder_button = (Button) findViewById(R.id.OverUnder);
+        overUnder_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setPresetOdds();
+            }
+        });
         spread_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
