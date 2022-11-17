@@ -16,6 +16,8 @@ public class add_bet extends AppCompatActivity {
     private Button spread_button;
     private Button ML_button;
     private Button overUnder_button;
+    private int[] checkDoneArray = {1000019, 1000018, 1000004, 1000015, 1000014};
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -69,8 +71,7 @@ public class add_bet extends AppCompatActivity {
 
     public void checkDone(){
         for (int i=0;i<5;i++) {
-
-            EditText text = (EditText) findViewById(R.id.teamOne);
+            EditText text = (EditText) findViewById(checkDoneArray[i]);
             String value = text.getText().toString();
             String newBetError = "Error: One or more boxes empty";
             while (value == "") {
