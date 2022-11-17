@@ -68,7 +68,16 @@ public class add_bet extends AppCompatActivity {
     }
 
     public void checkDone(){
+        for (int i=0;i<5;i++) {
 
+            EditText text = (EditText) findViewById(R.id.teamOne);
+            String value = text.getText().toString();
+            String newBetError = "Error: One or more boxes empty";
+            while (value == "") {
+                TextView errorMessage = (TextView) findViewById(R.id.notDone);
+                errorMessage.setText(newBetError);
+            }
+        }
     }
 
     public void createNewBet(){
