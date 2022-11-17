@@ -48,6 +48,8 @@ public class add_bet extends AppCompatActivity {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                checkDone();
+                createNewBet();
                 openTrackHistory();
             }
         });
@@ -64,6 +66,14 @@ public class add_bet extends AppCompatActivity {
     public void openTrackHistory() {
         Intent intent = new Intent(this, Track_History.class);
         startActivity(intent);
+    }
+
+    public void checkDone(){
+
+    }
+
+    public void createNewBet(){
+
     }
 
     public void setPresetOdds() {
