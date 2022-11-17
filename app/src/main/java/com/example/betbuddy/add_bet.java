@@ -16,6 +16,8 @@ public class add_bet extends AppCompatActivity {
     private Button spread_button;
     private Button ML_button;
     private Button overUnder_button;
+    private int[] checkDoneArray = {1000019, 1000018, 1000004, 1000015, 1000014};
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -27,7 +29,7 @@ public class add_bet extends AppCompatActivity {
         ML_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setPresetOdds();
+                resetOdds();
             }
         });
         overUnder_button = (Button) findViewById(R.id.OverUnder);
@@ -68,7 +70,16 @@ public class add_bet extends AppCompatActivity {
     }
 
     public void checkDone(){
-
+        for (int i=0;i<5;i++) {
+            EditText text = (EditText) findViewById(checkDoneArray[i]);
+            String value = text.getText().toString();
+            String newBetError = "Error: One or more boxes empty";
+            TextView errorMessage = (TextView) findViewById(R.id.notDone);
+            while (value == "") {
+                errorMessage.setText(newBetError);
+            }
+            errorMessage.setText("");
+        }
     }
 
     public void createNewBet(){
@@ -102,7 +113,13 @@ public class add_bet extends AppCompatActivity {
     }
 
     public void setPresetOdds() {
+        EditText text = (EditText) findViewById(R.id.odds);
+        text.setText("-110");
+    }
 
+    public void resetOdds() {
+        EditText text = (EditText) findViewById(R.id.odds);
+        text.setText("");
     }
 /*
     public void printText(View view) {
