@@ -48,6 +48,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <RadioButton
+        android:id="@+id/OverUnder"
+        android:layout_width="86dp"
+        android:layout_height="63dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="378dp"
+        android:onClick="radioButtonHandler"
+        android:text="O/U"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.738"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -75,18 +88,12 @@
         app:layout_constraintHorizontal_bias="0.373"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-<RadioGroup
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:id="@+id/Group1">
+
     <RadioButton
         android:id="@+id/betSpread"
         android:layout_width="98dp"
         android:layout_height="67dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="375dp"
         android:onClick="radioButtonHandler"
         android:text="Spread"
@@ -99,7 +106,8 @@
         android:id="@+id/betMoneyline"
         android:layout_width="120dp"
         android:layout_height="69dp"
-        android:layout_marginTop="375dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="374dp"
         android:onClick="radioButtonHandler"
         android:text="Moneyline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,18 +115,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/OverUnder"
-        android:layout_width="86dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="376dp"
-        android:onClick="radioButtonHandler"
-        android:text="O/U"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.738"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</RadioGroup>
     <EditText
         android:id="@+id/sportsbook"
         android:layout_width="wrap_content"
