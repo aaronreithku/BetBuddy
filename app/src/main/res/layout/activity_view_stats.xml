@@ -16,6 +16,7 @@
         android:text="View Stats"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:textColor="@color/design_default_color_on_secondary"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
