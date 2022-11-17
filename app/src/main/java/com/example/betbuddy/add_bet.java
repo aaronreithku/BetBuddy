@@ -1,7 +1,6 @@
 package com.example.betbuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -73,7 +72,33 @@ public class add_bet extends AppCompatActivity {
     }
 
     public void createNewBet(){
+        //get team one from user
+        EditText user_t1 = (EditText) findViewById(R.id.teamOne);
+        String first_team = user_t1.getText().toString();
 
+        //get team two from user
+        EditText user_t2 = (EditText) findViewById(R.id.teamTwo);
+        String second_team = user_t2.getText().toString();
+
+        //get sportsbook from user
+        EditText user_book = (EditText) findViewById(R.id.sportsbook);
+        String  sports_book= user_book.getText().toString();
+
+        //get odds from user
+        EditText user_odds = (EditText) findViewById(R.id.odds);
+        String string_odds = user_book.getText().toString();
+
+        //get amount bet
+        EditText user_amount = (EditText) findViewById(R.id.amountBet);
+        String amount_bet = user_amount.getText().toString();
+
+
+        Bet user_bet = new Bet();
+        user_bet.setTeam1(first_team);
+        user_bet.setTeam1(second_team);
+        user_bet.setSportsBook(sports_book);
+        user_bet.setOdds(string_odds);
+        user_bet.setAmount(amount_bet);
     }
 
     public void setPresetOdds() {
