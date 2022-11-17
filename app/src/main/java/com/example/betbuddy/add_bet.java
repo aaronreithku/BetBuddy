@@ -29,7 +29,7 @@ public class add_bet extends AppCompatActivity {
         ML_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nothing();
+                resetOdds();
             }
         });
         overUnder_button = (Button) findViewById(R.id.OverUnder);
@@ -117,8 +117,9 @@ public class add_bet extends AppCompatActivity {
         text.setText("-110");
     }
 
-    public void nothing() {
-
+    public void resetOdds() {
+        EditText text = (EditText) findViewById(R.id.odds);
+        text.setText("");
     }
 /*
     public void printText(View view) {
