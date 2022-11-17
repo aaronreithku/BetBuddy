@@ -10,4 +10,5 @@
     <string name="welcome_to_BetBuddy">Welcome to BetBuddy</string>
     <string name="notDone"></string>
     <string name="addBetError">Error: One or more boxes empty</string>
+    <string name="presetOdds"></string>
 </resources>

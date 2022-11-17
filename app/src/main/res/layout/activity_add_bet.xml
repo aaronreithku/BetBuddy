@@ -40,6 +40,7 @@
         android:layout_marginTop="440dp"
         android:ems="10"
         android:hint="Odds"
+        android:text="@string/presetOdds"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.417"
         app:layout_constraintStart_toStartOf="parent"
