@@ -9,30 +9,29 @@
     <Button
         android:id="@+id/button"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="50dp"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="?android:textColorPrimary"
         android:onClick="submitButtonHandler"
         android:text="SUBMIT"
+        app:layout_constraintTop_toBottomOf="@+id/earningsBet"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/betWon" />
+        app:layout_constraintEnd_toEndOf="parent"
+         />
 
     <Button
         android:id="@+id/back"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
         android:layout_marginStart="54dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="?android:textColorPrimary"
         android:text="&lt;"
-        app:layout_constraintBottom_toTopOf="@+id/title"
-        app:layout_constraintEnd_toStartOf="@+id/notDone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,10 +44,11 @@
         android:textColor="?android:textColorPrimary"
         android:textSize="40sp"
         android:background="?attr/colorSecondaryVariant"
+        app:layout_constraintTop_toBottomOf="@+id/back"
         app:layout_constraintBottom_toTopOf="@+id/sportsbook"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back" />
+         />
 
     <EditText
         android:id="@+id/teamTwo"
@@ -56,54 +56,59 @@
         android:layout_height="0dp"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="70dp"
         android:ems="10"
         android:hint="Team Two"
-        app:layout_constraintBottom_toTopOf="@+id/odds"
+        app:layout_constraintBottom_toTopOf="@+id/betType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/betSelected" />
+        app:layout_constraintTop_toBottomOf="@+id/teamOne" />
 
     <EditText
         android:id="@+id/teamOne"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="0dp"
         android:layout_marginStart="54dp"
-        android:layout_marginTop="68dp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="60dp"
         android:ems="10"
         android:hint="Team One"
-        app:layout_constraintBottom_toBottomOf="@+id/teamTwo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sportsbook" />
+        app:layout_constraintBottom_toTopOf="@+id/teamTwo"
+        app:layout_constraintTop_toBottomOf="@+id/sportsbook" />
 
     <TextView
         android:id="@+id/betType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginBottom="55dp"
+        android:layout_width="306dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="54dp"
         android:text="Click Bet Type"
         android:textColor="?android:textColorPrimary"
+        android:background="?attr/colorSecondaryVariant"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/Group1"
-        app:layout_constraintStart_toStartOf="@+id/Group1" />
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/teamTwo"
+        app:layout_constraintBottom_toTopOf="@+id/Group1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+         />
 
     <RadioGroup
         android:id="@+id/Group1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="0dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/odds"
-        app:layout_constraintStart_toStartOf="@+id/teamTwo">
+        app:layout_constraintTop_toBottomOf="@id/betType"
+        app:layout_constraintBottom_toTopOf="@+id/odds"
+        app:layout_constraintStart_toStartOf="@+id/sportsbook"
+        app:layout_constraintEnd_toEndOf="@+id/sportsbook"
+        >
 
         <RadioButton
             android:id="@+id/betSpread"
             android:layout_width="98dp"
-            android:layout_height="67dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:onClick="radioButtonHandler"
             android:text="Spread"
@@ -115,7 +120,7 @@
         <RadioButton
             android:id="@+id/betMoneyline"
             android:layout_width="120dp"
-            android:layout_height="69dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:onClick="radioButtonHandler"
             android:text="Moneyline"
@@ -127,7 +132,7 @@
         <RadioButton
             android:id="@+id/OverUnder"
             android:layout_width="86dp"
-            android:layout_height="63dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:onClick="radioButtonHandler"
             android:text="O/U"
@@ -146,10 +151,11 @@
         android:ems="10"
         android:hint="Odds"
         android:text="@string/presetOdds"
+        app:layout_constraintTop_toBottomOf="@+id/Group1"
         app:layout_constraintBottom_toTopOf="@+id/amountBet"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teamTwo" />
+        app:layout_constraintEnd_toEndOf="parent"
+         />
 
     <EditText
         android:id="@+id/amountBet"
@@ -159,10 +165,11 @@
         android:layout_marginEnd="54dp"
         android:ems="10"
         android:hint="Bet Amount"
-        app:layout_constraintBottom_toTopOf="@+id/betWon"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/odds"
+        app:layout_constraintBottom_toTopOf="@+id/earningsBet"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/odds" />
+        app:layout_constraintEnd_toEndOf="parent"
+         />
 
     <EditText
         android:id="@+id/earningsBet"
@@ -172,9 +179,11 @@
         android:ems="10"
         android:hint="Bet Earnings"
         android:text="@string/earningsBet"
-        app:layout_constraintBaseline_toBaselineOf="@+id/betWon"
+        app:layout_constraintTop_toBottomOf="@+id/amountBet"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/betWon"
-        app:layout_constraintStart_toStartOf="parent" />
+         />
 
     <EditText
         android:id="@+id/sportsbook"
@@ -182,37 +191,37 @@
         android:layout_height="0dp"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="0dp"
         android:ems="10"
         android:hint="Sportsbook"
-        app:layout_constraintBottom_toTopOf="@+id/betSelected"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/teamOne"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/betSelected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="42dp"
+        android:layout_marginEnd="0dp"
         android:text=""
         android:textColor="?android:textColorPrimary"
         android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/teamTwo"
-        app:layout_constraintEnd_toEndOf="@+id/betType"
-        app:layout_constraintTop_toBottomOf="@+id/sportsbook" />
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
 
     <RadioButton
         android:id="@+id/betWon"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginEnd="54dp"
         android:onClick="radioButtonHandler"
         android:text="Won?"
+        app:layout_constraintTop_toBottomOf="@+id/amountBet"
         app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/earningsBet"
-        app:layout_constraintTop_toBottomOf="@+id/amountBet" />
+        app:layout_constraintEnd_toEndOf="parent"
+         />
 
     <TextView
         android:id="@+id/notDone"
