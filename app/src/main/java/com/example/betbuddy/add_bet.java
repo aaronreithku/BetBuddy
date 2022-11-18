@@ -62,6 +62,13 @@ public class add_bet extends AppCompatActivity {
                 openTrackHistory();
             }
         });
+        won_button = (Button) findViewById(R.id.betWon);
+        won_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calcEarnings();
+            }
+        });
 
     }
 
@@ -138,6 +145,7 @@ public class add_bet extends AppCompatActivity {
             else{
                 earnings = ((multiplicandAmount*multiplicandOdds)/100)+multiplicandAmount;
             }
+            earnings = (Math.round(earnings * 100) / 100.0);
             String stringEarnings = earnings+"";
             betEarnings.setText(stringEarnings);
         }
