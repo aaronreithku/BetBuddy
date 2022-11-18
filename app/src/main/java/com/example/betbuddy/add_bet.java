@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class add_bet extends AppCompatActivity {
@@ -17,6 +18,7 @@ public class add_bet extends AppCompatActivity {
     private Button ML_button;
     private Button overUnder_button;
     private Button won_button;
+    RadioGroup rgBetType;
     private int[] checkDoneArray = {1000021, 1000019, 1000004, 1000017, 1000016};
 //teamOne, teamTwo, Sportsbook, Odds, Bet Amount
 
@@ -50,9 +52,9 @@ public class add_bet extends AppCompatActivity {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkDone();
+                //checkDone();
                 createNewBet();
-                openTrackHistory();
+                //openTrackHistory();
             }
         });
         back_button = (Button) findViewById(R.id.back);
@@ -91,6 +93,8 @@ public class add_bet extends AppCompatActivity {
     }
 
     public void createNewBet(){
+        Bet user_bet = new Bet();
+
         //get team one from user
         EditText user_t1 = (EditText) findViewById(R.id.teamOne);
         String first_team = user_t1.getText().toString();
@@ -111,16 +115,43 @@ public class add_bet extends AppCompatActivity {
         EditText user_amount = (EditText) findViewById(R.id.amountBet);
         String amount_bet = user_amount.getText().toString();
 
+        //get bet type
+        rgBetType = findViewById(R.id.Group1);
+        int checkedId = rgBetType.getCheckedRadioButtonId();
+        if(checkedId == -1){
+            //some kind of error, should probably end up in checkDone()
+        }
+        else{
+            findRadioButton(checkedId, user_bet);
+        }
 
-        Bet user_bet = new Bet();
         user_bet.setTeam1(first_team);
         user_bet.setTeam1(second_team);
         user_bet.setSportsBook(sports_book);
         user_bet.setOdds(string_odds);
         user_bet.setAmount(amount_bet);
 
-        Storage_System new_system = new Storage_System();
-        new_system.add_Bet(user_bet);
+        TextView title = (TextView) findViewById(R.id.title);
+        title.setText(user_bet.getBetType());
+
+        //Storage_System new_system = new Storage_System();
+        //new_system.add_Bet(user_bet);
+    }
+
+    private void findRadioButton(int checkedId, Bet user_bet) {
+        switch (checkedId){
+            case R.id.betSpread:
+                user_bet.setBetType("Spread");
+                break;
+
+            case R.id.betMoneyline:
+                user_bet.setBetType("Moneyline");
+                break;
+
+            case R.id.OverUnder:
+                user_bet.setBetType("O/U");
+                break;
+        }
     }
 
     public void calcEarnings() {
