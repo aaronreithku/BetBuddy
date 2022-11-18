@@ -9,11 +9,11 @@
     <TextView
         android:id="@+id/text_home"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_marginTop="88dp"
-        android:layout_marginBottom="51dp"
+        android:layout_marginBottom="0dp"
         android:text="Track History"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textSize="34sp"
         android:background="?attr/colorSecondary"
         android:textColor="?android:textColorPrimary"
@@ -24,9 +24,10 @@
 
     <TextView
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="220dp"
-        android:layout_height="0dp"
+        android:layout_width="446dp"
+        android:layout_height="67dp"
         android:layout_marginBottom="28dp"
+        android:background="?attr/colorSecondaryVariant"
         android:ems="10"
         android:gravity="center"
         android:text="Please select an option"
