@@ -11,4 +11,6 @@
     <string name="notDone"></string>
     <string name="addBetError">Error: One or more boxes empty</string>
     <string name="presetOdds"></string>
+    <string name="earningsBet"></string>
+    <string name="empty"></string>
 </resources>

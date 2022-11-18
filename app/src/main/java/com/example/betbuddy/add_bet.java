@@ -17,8 +17,8 @@ public class add_bet extends AppCompatActivity {
     private Button ML_button;
     private Button overUnder_button;
     private Button won_button;
-    private int[] checkDoneArray = {1000019, 1000018, 1000004, 1000015, 1000014};
-
+    private int[] checkDoneArray = {1000021, 1000019, 1000004, 1000017, 1000016};
+//teamOne, teamTwo, Sportsbook, Odds, Bet Amount
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -111,6 +111,34 @@ public class add_bet extends AppCompatActivity {
         user_bet.setSportsBook(sports_book);
         user_bet.setOdds(string_odds);
         user_bet.setAmount(amount_bet);
+    }
+
+    public void calcEarnings() {
+        boolean oddsFilled = false;
+        boolean betAmountFilled = false;
+        double earnings;
+        EditText odds = (EditText) findViewById(R.id.odds);
+        EditText betAmount = (EditText) findViewById(R.id.amountBet);
+        EditText betEarnings = (EditText) findViewById(R.id.earningsBet);
+        if (odds.getText().toString().trim().length() != 0) {
+            oddsFilled = true;
+        }
+        if (betAmount.getText().toString().trim().length() != 0) {
+            betAmountFilled = true;
+        }
+        if (oddsFilled == true && betAmountFilled == true) {
+            double multiplicandOdds = Double.parseDouble(odds.getText().toString());
+            double multiplicandAmount = Double.parseDouble(betAmount.getText().toString());
+            if (multiplicandOdds < 100) {
+                earnings = (multiplicandAmount/(multiplicandOdds/-100))+multiplicandAmount;
+            }
+            else{
+                earnings = ((multiplicandAmount*multiplicandOdds)/100)+multiplicandAmount;
+            }
+            String stringEarnings = earnings+"";
+            betEarnings.setText(stringEarnings);
+        }
+
     }
 
     public void setPresetOdds() {
