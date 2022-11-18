@@ -6,6 +6,8 @@ import java.util.ArrayList; //import ArrayList
 
 public class Storage_System{
 
+    public static Map<String, ArrayList<Bet>> multiValueMap;
+
     //method that displays all Bet information
     static void display(Bet bet) {
         System.out.print("Team1: ");
@@ -89,89 +91,71 @@ public class Storage_System{
 
     }
 
+
     public static void main(String[] args) {
-
-        //implement in Android Studio, get amounts from input new form
-        String input_team1 = "Bears";
-        String input_team2 = "Team 2";
-        String input_betType = "Type";
-        String input_sportsbook = "Book";
-        String input_amount = "a lot";
-        String input_odds = "3/2";
-        String input_gain = "none";
-
         //term that user will search
-        String search = "";
+        //String search = "";
 
-
-
-        //Team 1, Team 2, Bet type, sportsbook, amount, odds, return
-        Bet new_bet = new Bet();
-        new_bet.setTeam1(input_team1);
-        new_bet.setTeam2(input_team2);
-        new_bet.setBetType(input_betType);
-        new_bet.setSportsBook(input_sportsbook);
-        new_bet.setAmount(input_amount);
-        new_bet.setOdds(input_odds);
-        new_bet.setGain(input_gain);
 
         //create a hashmap to store everything
-        Map<String, ArrayList<Bet>> multiValueMap = new HashMap<String, ArrayList<Bet>>();
+         multiValueMap = new HashMap<String, ArrayList<Bet>>();
 
-        //create unique ID for each bet
+
+        //get a bet and assign a property to a variable
+       // ArrayList<Bet> return_bets = multiValueMap.get(search);
+
+       // for (Bet bets: return_bets)
+       // {
+        //    display(bets);
+        //}
+
+    }
+
+     static void add_Bet(Bet bet){
+        //unique ID storage
         Integer new_ID = multiValueMap.size() +1;
-        new_bet.setID(String.valueOf(new_ID));
+        bet.setID(String.valueOf(new_ID));
 
         //try to store to an already stored key if possible, else make a new key
-        //unique ID storage
         try{
 
-            multiValueMap.get(new_bet.getID()).add(new_bet);
+            multiValueMap.get(bet.getID()).add(bet);
 
         } catch (Exception e) {
-            multiValueMap.put(new_bet.getID(), new ArrayList<Bet>());
-            multiValueMap.get(new_bet.getID()).add(new_bet);
+            multiValueMap.put(bet.getID(), new ArrayList<Bet>());
+            multiValueMap.get(bet.getID()).add(bet);
         }
         //this is storage for first team
         try{
 
-            multiValueMap.get(input_team1).add(new_bet);
+            multiValueMap.get(bet.getTeam1()).add(bet);
 
         } catch (Exception e) {
-            multiValueMap.put(input_team1, new ArrayList<Bet>());
-            multiValueMap.get(input_team1).add(new_bet);
+            multiValueMap.put(bet.getTeam1(), new ArrayList<Bet>());
+            multiValueMap.get(bet.getTeam1()).add(bet);
         }
 
         //same but for team 2
         try{
 
-            multiValueMap.get(input_team2).add(new_bet);
+            multiValueMap.get(bet.getTeam2()).add(bet);
 
         } catch (Exception e) {
-            multiValueMap.put(input_team2, new ArrayList<Bet>());
-            multiValueMap.get(input_team2).add(new_bet);
+            multiValueMap.put(bet.getTeam2(), new ArrayList<Bet>());
+            multiValueMap.get(bet.getTeam2()).add(bet);
         }
 
         //same but for amount
         try{
 
-            multiValueMap.get(input_amount).add(new_bet);
+            multiValueMap.get(bet.getAmount()).add(bet);
 
         } catch (Exception e) {
-            multiValueMap.put(input_amount, new ArrayList<Bet>());
-            multiValueMap.get(input_amount).add(new_bet);
+            multiValueMap.put(bet.getAmount(), new ArrayList<Bet>());
+            multiValueMap.get(bet.getAmount()).add(bet);
         }
-
-
-        //get a bet and assign a property to a variable
-        ArrayList<Bet> return_bets = multiValueMap.get(search);
-
-        for (Bet bets: return_bets)
-        {
-            display(bets);
-        }
-
     }
+
 }
 
 
