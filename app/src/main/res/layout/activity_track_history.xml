@@ -15,6 +15,7 @@
         android:text="Track History"
         android:textAlignment="center"
         android:textSize="34sp"
+        android:background="?attr/colorSecondary"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
         app:layout_constraintEnd_toEndOf="parent"
