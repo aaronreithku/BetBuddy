@@ -16,6 +16,7 @@ public class add_bet extends AppCompatActivity {
     private Button spread_button;
     private Button ML_button;
     private Button overUnder_button;
+    private Button won_button;
     private int[] checkDoneArray = {1000019, 1000018, 1000004, 1000015, 1000014};
 
 
