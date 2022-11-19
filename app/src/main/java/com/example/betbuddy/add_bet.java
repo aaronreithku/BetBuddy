@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -32,19 +33,26 @@ public class add_bet extends AppCompatActivity {
         ML_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                RadioButton lastRadioBtn = (RadioButton) findViewById(R.id.OverUnder);
+                lastRadioBtn.setError(null);
                 resetOdds();
+
             }
         });
         overUnder_button = (Button) findViewById(R.id.OverUnder);
         overUnder_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                RadioButton lastRadioBtn = (RadioButton) findViewById(R.id.OverUnder);
+                lastRadioBtn.setError(null);
                 setPresetOdds();
             }
         });
         spread_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                RadioButton lastRadioBtn = (RadioButton) findViewById(R.id.OverUnder);
+                lastRadioBtn.setError(null);
                 setPresetOdds();
             }
         });
@@ -53,6 +61,9 @@ public class add_bet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //checkDone();
+                if (checkDoneExperimental() == true){
+                    return;
+                }
                 createNewBet();
                 //openTrackHistory();
             }
@@ -74,23 +85,65 @@ public class add_bet extends AppCompatActivity {
 
     }
 
+    private boolean checkDoneExperimental() {
+        boolean errorFlag = false;
+        EditText text = (EditText) findViewById(R.id.teamOne);
+        if (text.length() == 0) {
+            text.setError("Please Complete Field");
+            errorFlag = true;
+        }
+        text = (EditText) findViewById(R.id.teamTwo);
+        if (text.length() == 0) {
+            text.setError("Please Complete Field");
+            errorFlag = true;
+        }
+        text = (EditText) findViewById(R.id.odds);
+        if (text.length() == 0) {
+            text.setError("Please Complete Field");
+            errorFlag = true;
+        }
+        text = (EditText) findViewById(R.id.amountBet);
+        if (text.length() == 0) {
+            text.setError("Please Complete Field");
+            errorFlag = true;
+        }
+        text = (EditText) findViewById(R.id.sportsbook);
+        if (text.length() == 0) {
+            text.setError("Please Complete Field");
+            errorFlag = true;
+        }
+        rgBetType = findViewById(R.id.Group1);
+        int checkedId = rgBetType.getCheckedRadioButtonId();
+        RadioButton lastRadioBtn = (RadioButton) findViewById(R.id.OverUnder);
+        if(checkedId == -1){
+            lastRadioBtn.setError("Please Complete Field");
+            errorFlag = true;
+        }
+        else{
+            lastRadioBtn.setError(null);
+        }
+        return(errorFlag);
+    }
+
     public void openTrackHistory() {
         Intent intent = new Intent(this, Track_History.class);
         startActivity(intent);
     }
 
+    /*
     public void checkDone(){
-        for (int i=0;i<5;i++) {
-            EditText text = (EditText) findViewById(checkDoneArray[i]);
+       for (int i=0;i<5;i++) {
+            EditText text = (EditText) findViewById(R.id.teamOne);
             String value = text.getText().toString();
             String newBetError = "Error: One or more boxes empty";
             TextView errorMessage = (TextView) findViewById(R.id.notDone);
-            while (value == "") {
-                errorMessage.setText(newBetError);
+            if (text.length() == 0) {
+                text.setError("Please Complete Field");
             }
             errorMessage.setText("");
         }
     }
+    */
 
     public void createNewBet(){
         Bet user_bet = new Bet();
@@ -130,9 +183,6 @@ public class add_bet extends AppCompatActivity {
         user_bet.setSportsBook(sports_book);
         user_bet.setOdds(string_odds);
         user_bet.setAmount(amount_bet);
-
-        TextView title = (TextView) findViewById(R.id.title);
-        title.setText(user_bet.getBetType());
 
         //Storage_System new_system = new Storage_System();
         //new_system.add_Bet(user_bet);
