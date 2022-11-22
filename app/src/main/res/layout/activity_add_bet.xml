@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".add_bet">
+    tools:context=".add_bet"
+    android:id="@+id/add_bet_activity">
 
     <Button
         android:id="@+id/button"
@@ -109,26 +110,25 @@
 
         <RadioButton
             android:id="@+id/betMoneyline"
-            android:layout_width="120dp"
+            android:layout_width="113dp"
             android:layout_height="wrap_content"
             android:onClick="radioButtonHandler"
             android:text="Moneyline"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/OverUnder"
             app:layout_constraintStart_toEndOf="@id/betSpread"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <RadioButton
             android:id="@+id/OverUnder"
-            android:layout_width="92dp"
-            android:layout_height="wrap_content"
+            android:layout_width="79dp"
+            android:layout_height="match_parent"
             android:onClick="radioButtonHandler"
             android:text="O/U"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/betMoneyline"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
     </RadioGroup>
 
     <EditText

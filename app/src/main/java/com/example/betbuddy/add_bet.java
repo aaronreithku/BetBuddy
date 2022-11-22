@@ -3,6 +3,7 @@ package com.example.betbuddy;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class add_bet extends AppCompatActivity {
 
@@ -32,6 +35,7 @@ public class add_bet extends AppCompatActivity {
         ML_button = (Button) findViewById(R.id.betMoneyline);
         ML_button.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
                 RadioButton lastRadioBtn = (RadioButton) findViewById(R.id.OverUnder);
                 lastRadioBtn.setError(null);
@@ -61,10 +65,11 @@ public class add_bet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //checkDone();
-                if (checkDoneExperimental() == true){
+                if (checkDoneExperimental()){
                     return;
                 }
                 createNewBet();
+                submitSuccess();
                 //openTrackHistory();
             }
         });
@@ -75,11 +80,20 @@ public class add_bet extends AppCompatActivity {
                 openTrackHistory();
             }
         });
-        won_button = (Button) findViewById(R.id.betWon);
+        RadioButton won_button = (RadioButton) findViewById(R.id.betWon);
         won_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calcEarnings();
+                if (!won_button.isSelected()) {
+                    won_button.setChecked(true);
+                    won_button.setSelected(true);
+                    calcEarnings();
+                } else {
+                    won_button.setChecked(false);
+                    won_button.setSelected(false);
+                    EditText text = (EditText) findViewById(R.id.earningsBet);
+                    text.setText("");
+                }
             }
         });
 
@@ -162,7 +176,7 @@ public class add_bet extends AppCompatActivity {
 
         //get odds from user
         EditText user_odds = (EditText) findViewById(R.id.odds);
-        String string_odds = user_book.getText().toString();
+        String string_odds = user_odds.getText().toString();
 
         //get amount bet
         EditText user_amount = (EditText) findViewById(R.id.amountBet);
@@ -171,13 +185,8 @@ public class add_bet extends AppCompatActivity {
         //get bet type
         rgBetType = findViewById(R.id.Group1);
         int checkedId = rgBetType.getCheckedRadioButtonId();
-        if(checkedId == -1){
-            //some kind of error, should probably end up in checkDone()
-        }
-        else{
-            findRadioButton(checkedId, user_bet);
-        }
 
+        findRadioButton(checkedId, user_bet);
         user_bet.setTeam1(first_team);
         user_bet.setTeam1(second_team);
         user_bet.setSportsBook(sports_book);
@@ -241,6 +250,42 @@ public class add_bet extends AppCompatActivity {
     public void resetOdds() {
         EditText text = (EditText) findViewById(R.id.odds);
         text.setText("");
+    }
+
+    public void submitSuccess(){
+
+        EditText text = (EditText) findViewById(R.id.sportsbook);
+        text.setText("");
+
+        text = (EditText) findViewById(R.id.teamOne);
+        text.setText("");
+
+        text = (EditText) findViewById(R.id.teamTwo);
+        text.setText("");
+
+        text = (EditText) findViewById(R.id.odds);
+        text.setText("");
+
+        text = (EditText) findViewById(R.id.amountBet);
+        text.setText("");
+
+        text = (EditText) findViewById(R.id.earningsBet);
+        text.setText("");
+
+        rgBetType = findViewById(R.id.Group1);
+        rgBetType.clearCheck();
+
+        RadioButton won_button = (RadioButton) findViewById(R.id.betWon);
+        won_button.setChecked(false);
+
+        Snackbar snackbar= Snackbar.make(findViewById(R.id.add_bet_activity), "Bet Submitted", Snackbar.LENGTH_SHORT);
+        View mView = snackbar.getView();
+        mView.setBackgroundColor(Color.GREEN);
+        TextView mTextView = (TextView) mView.findViewById(com.google.android.material.R.id.snackbar_text);
+        mTextView.setTextColor(Color.BLACK);
+        mTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        snackbar.show();
+
     }
 /*
     public void printText(View view) {
