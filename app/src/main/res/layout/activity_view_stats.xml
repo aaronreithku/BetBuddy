@@ -23,6 +23,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id = "@+id/table1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:layout_margin="40dp"> <!-- collapse the first column of the table row-->
+
+
+        <!-- first row of the table layout-->
+        <TableRow
+            android:background="@color/purple_500"
+            android:id="@+id/row1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Add elements/columns in the first row-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Team1"
+                android:textColor="@android:color/white"
+                android:padding="10sp"
+                android:textSize="14sp"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Team2"
+                android:textColor="@android:color/white"
+                android:padding="10sp"
+                android:textSize="14sp"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Bet Type"
+                android:textColor="@color/white"
+                android:padding="10sp"
+                android:textSize="14sp"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="SportsBook"
+                android:textColor="@color/white"
+                android:padding="10sp"
+                android:textSize="14sp"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Amount"
+                android:textColor="@color/white"
+                android:padding="10sp"
+                android:textSize="12sp"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                />
+        </TableRow>
+        <TextView
+            android:id="@+id/attrib_team1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:padding="10sp"
+            android:textSize="12sp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            />
+
+    </TableLayout>
+
     <Button
         android:id="@+id/button"
         android:layout_width="0dp"

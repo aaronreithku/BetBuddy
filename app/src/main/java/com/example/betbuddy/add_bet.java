@@ -193,8 +193,8 @@ public class add_bet extends AppCompatActivity {
         user_bet.setOdds(string_odds);
         user_bet.setAmount(amount_bet);
 
-        //Storage_System new_system = new Storage_System();
-        //new_system.add_Bet(user_bet);
+        Storage_System new_system = new Storage_System();
+        new_system.add_Bet(user_bet);
     }
 
     private void findRadioButton(int checkedId, Bet user_bet) {

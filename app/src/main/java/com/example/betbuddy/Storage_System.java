@@ -4,9 +4,15 @@ import java.util.HashMap; // import the HashMap class
 import java.util.Map;
 import java.util.ArrayList; //import ArrayList
 
+//package com.example.betbuddy;
+
+import java.util.HashMap; // import the HashMap class
+import java.util.Map;
+import java.util.ArrayList; //import ArrayList
+
 public class Storage_System{
 
-    public static Map<String, ArrayList<Bet>> multiValueMap;
+    public static Map<String, ArrayList<Bet>> multiValueMap = new HashMap<String, ArrayList<Bet>>();;
 
     //method that displays all Bet information
     static void display(Bet bet) {
@@ -24,6 +30,10 @@ public class Storage_System{
         System.out.print(bet.getOdds() + " ");
         System.out.print("Gain/Loss: ");
         System.out.print(bet.getGain() + " \n\n");
+    }
+
+    public static ArrayList<Bet> get_AllBets() {
+        return multiValueMap.get("Bet");
     }
 
     static void delete_Bet(Bet bet,Map<String, ArrayList<Bet>> map) {
@@ -98,20 +108,21 @@ public class Storage_System{
 
 
         //create a hashmap to store everything
-         multiValueMap = new HashMap<String, ArrayList<Bet>>();
+        // multiValueMap = new HashMap<String, ArrayList<Bet>>();
 
 
         //get a bet and assign a property to a variable
-       // ArrayList<Bet> return_bets = multiValueMap.get(search);
 
-       // for (Bet bets: return_bets)
-       // {
-        //    display(bets);
-        //}
+        //  ArrayList<Bet> return_bets = new_system.get_AllBets();
+
+        //   for (Bet bets: return_bets)
+        //   {
+        //       display(bets);
+        //   }
 
     }
 
-     static void add_Bet(Bet bet){
+    static void add_Bet(Bet bet){
         //unique ID storage
         Integer new_ID = multiValueMap.size() +1;
         bet.setID(String.valueOf(new_ID));
@@ -154,8 +165,17 @@ public class Storage_System{
             multiValueMap.put(bet.getAmount(), new ArrayList<Bet>());
             multiValueMap.get(bet.getAmount()).add(bet);
         }
-    }
 
+        //same but for a general key of "bet" where all bets are stored
+        try{
+
+            multiValueMap.get("Bet").add(bet);
+
+        } catch (Exception e) {
+            multiValueMap.put("Bet", new ArrayList<Bet>());
+            multiValueMap.get("Bet").add(bet);
+        }
+    }
 }
 
 
