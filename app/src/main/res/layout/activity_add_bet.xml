@@ -121,7 +121,7 @@
 
         <RadioButton
             android:id="@+id/OverUnder"
-            android:layout_width="79dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:onClick="radioButtonHandler"
             android:text="O/U"

@@ -6,10 +6,12 @@ public class Bet {
     private String team2;
     private String betType;
     private String sportsBook;
-    private String amount;
+    private String amountBet;
     private String odds;
     private String gain;
     private String ID;
+    private String amountWon;
+    private String won;
 
     //getters and setters for all betting characteristics
     //everything stored as strings for easier storage
@@ -46,12 +48,10 @@ public class Bet {
     }
 
     void setAmount(String a){
-        amount = a;
+        amountBet = a;
     }
 
-    String getAmount(){
-        return amount;
-    }
+    String getAmount() {return amountBet;}
 
     void setOdds(String o){
         odds = o;
@@ -75,6 +75,22 @@ public class Bet {
 
     String getID() {
         return ID;
+    }
+
+    void setWon(String i) {
+        won = i;
+    }
+
+    String getWon() {
+        return won;
+    }
+
+    void setAmountWon(String a){
+        amountWon = a;
+    }
+
+    String getAmountWon() {
+        return amountWon;
     }
 
 }

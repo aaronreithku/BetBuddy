@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="12dp"
+    app:cardCornerRadius="16dp"
+    android:layout_margin="16dp"
+    android:backgroundTint="#efefef">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sportsbook: "
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+
+            <TextView
+                android:id="@+id/text_sportsbook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+        </LinearLayout>        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team 1: "
+            android:textSize="24dp"
+            android:textColor="@color/black"
+            style="bold"/>
+
+        <TextView
+            android:id="@+id/text_team1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:textColor="@color/black"
+            style="bold"/>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Team 2: "
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+
+            <TextView
+                android:id="@+id/text_team2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bet Type: "
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+
+            <TextView
+                android:id="@+id/text_betType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Odds: "
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+
+            <TextView
+                android:id="@+id/text_odds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount Bet: "
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+
+            <TextView
+                android:id="@+id/text_amountBet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount Won: "
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+
+            <TextView
+                android:id="@+id/text_amountWon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="W/L: "
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+
+            <TextView
+                android:id="@+id/text_won"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                style="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

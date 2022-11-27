@@ -3,6 +3,7 @@ package com.example.betbuddy;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +12,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.UUID;
 
 public class add_bet extends AppCompatActivity {
 
@@ -23,7 +27,9 @@ public class add_bet extends AppCompatActivity {
     private Button overUnder_button;
     private Button won_button;
     RadioGroup rgBetType;
-    private int[] checkDoneArray = {1000021, 1000019, 1000004, 1000017, 1000016};
+    DBHelper DB;
+    Boolean updateMode;
+    //private int[] checkDoneArray = {1000021, 1000019, 1000004, 1000017, 1000016};
 //teamOne, teamTwo, Sportsbook, Odds, Bet Amount
 
     @SuppressLint("MissingInflatedId")
@@ -31,8 +37,20 @@ public class add_bet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bet);
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            int betPosition = getIntent().getIntExtra("position",0);
+            populateFields(betPosition);
+            updateMode = true;
+        }
+        else{
+            updateMode = false;
+        }
+
         spread_button = (Button) findViewById(R.id.betSpread);
         ML_button = (Button) findViewById(R.id.betMoneyline);
+        DB = new DBHelper(this);
         ML_button.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -68,8 +86,18 @@ public class add_bet extends AppCompatActivity {
                 if (checkDoneExperimental()){
                     return;
                 }
-                createNewBet();
+                if (updateMode == true) {
+                    int betPosition = getIntent().getIntExtra("position",0);
+                    Cursor cursor = DB.getUserdata();
+                    cursor.moveToPosition(betPosition);
+                    String sameKey = cursor.getString(8);
+                    updateUserBet(sameKey);
+                }
+                else{
+                    createNewBet();
+                }
                 submitSuccess();
+                updateMode = false;
                 //openTrackHistory();
             }
         });
@@ -182,9 +210,15 @@ public class add_bet extends AppCompatActivity {
         EditText user_amount = (EditText) findViewById(R.id.amountBet);
         String amount_bet = user_amount.getText().toString();
 
+        //get earnings
+        EditText user_amountWon = (EditText) findViewById(R.id.earningsBet);
+        String amount_Won = user_amountWon.getText().toString();
+
         //get bet type
         rgBetType = findViewById(R.id.Group1);
         int checkedId = rgBetType.getCheckedRadioButtonId();
+
+        //add whether the user has won lost or pending
 
         findRadioButton(checkedId, user_bet);
         user_bet.setTeam1(first_team);
@@ -192,9 +226,17 @@ public class add_bet extends AppCompatActivity {
         user_bet.setSportsBook(sports_book);
         user_bet.setOdds(string_odds);
         user_bet.setAmount(amount_bet);
+        if(amount_Won.length() == 0){
+            user_bet.setAmountWon("Pending");
+        }
+        else{
+            user_bet.setAmountWon(amount_Won);
+        }
+        user_bet.setWon("Pending");
 
-        Storage_System new_system = new Storage_System();
-        new_system.add_Bet(user_bet);
+        Boolean checkinsertdata = DB.insertUserdata(user_bet.getSportsBook(), user_bet.getTeam1(), user_bet.getTeam2(), user_bet.getBetType(), user_bet.getOdds(), user_bet.getAmount(), user_bet.getAmountWon(), user_bet.getWon(), getKey());
+        //Storage_System new_system = new Storage_System();
+        //new_system.add_Bet(user_bet);
     }
 
     private void findRadioButton(int checkedId, Bet user_bet) {
@@ -245,6 +287,8 @@ public class add_bet extends AppCompatActivity {
     public void setPresetOdds() {
         EditText text = (EditText) findViewById(R.id.odds);
         text.setText("-110");
+        text.setError(null);
+
     }
 
     public void resetOdds() {
@@ -278,14 +322,124 @@ public class add_bet extends AppCompatActivity {
         RadioButton won_button = (RadioButton) findViewById(R.id.betWon);
         won_button.setChecked(false);
 
-        Snackbar snackbar= Snackbar.make(findViewById(R.id.add_bet_activity), "Bet Submitted", Snackbar.LENGTH_SHORT);
-        View mView = snackbar.getView();
-        mView.setBackgroundColor(Color.GREEN);
-        TextView mTextView = (TextView) mView.findViewById(com.google.android.material.R.id.snackbar_text);
-        mTextView.setTextColor(Color.BLACK);
-        mTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        snackbar.show();
+        if(updateMode == false) {
+            Snackbar snackbar = Snackbar.make(findViewById(R.id.add_bet_activity), "Bet Submitted", Snackbar.LENGTH_SHORT);
+            View mView = snackbar.getView();
+            mView.setBackgroundColor(Color.GREEN);
+            TextView mTextView = (TextView) mView.findViewById(com.google.android.material.R.id.snackbar_text);
+            mTextView.setTextColor(Color.BLACK);
+            mTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            snackbar.show();
+        }
 
+    }
+
+    private String getKey()
+    {
+        String id = UUID.randomUUID().toString().substring(0,8);
+        return id;
+    }
+
+    public void populateFields(int betPosition){
+        DB = new DBHelper(this);
+        Cursor cursor = DB.getUserdata();
+        cursor.moveToPosition(betPosition);
+        String sameKey = cursor.getString(8);
+
+        EditText text = (EditText) findViewById(R.id.sportsbook);
+        text.setText(cursor.getString(0));
+
+        text = (EditText) findViewById(R.id.teamOne);
+        text.setText(cursor.getString(1));
+
+        text = (EditText) findViewById(R.id.teamTwo);
+        text.setText(cursor.getString(2));
+
+        rgBetType = findViewById(R.id.Group1);
+        String betType = cursor.getString(3);
+
+        if(betType.length() == 6){
+           rgBetType.check(R.id.betSpread);
+        }
+        else if(betType.length() == 9){
+            rgBetType.check(R.id.betMoneyline);
+        }
+        else if(betType.length() == 3){
+            rgBetType.check(R.id.OverUnder);
+        }
+
+        text = (EditText) findViewById(R.id.odds);
+        text.setText(cursor.getString(4));
+
+        text = (EditText) findViewById(R.id.amountBet);
+        text.setText(cursor.getString(5));
+
+
+        text = (EditText) findViewById(R.id.earningsBet);
+        if(!cursor.getString(6).equals("Pending"))
+        {
+            text.setText(cursor.getString(6));
+        }
+
+    }
+
+    private void updateUserBet(String sameKey) {
+        Bet user_bet = new Bet();
+
+        //get team one from user
+        EditText user_t1 = (EditText) findViewById(R.id.teamOne);
+        String first_team = user_t1.getText().toString();
+
+        //get team two from user
+        EditText user_t2 = (EditText) findViewById(R.id.teamTwo);
+        String second_team = user_t2.getText().toString();
+
+        //get sportsbook from user
+        EditText user_book = (EditText) findViewById(R.id.sportsbook);
+        String  sports_book= user_book.getText().toString();
+
+        //get odds from user
+        EditText user_odds = (EditText) findViewById(R.id.odds);
+        String string_odds = user_odds.getText().toString();
+
+        //get amount bet
+        EditText user_amount = (EditText) findViewById(R.id.amountBet);
+        String amount_bet = user_amount.getText().toString();
+
+        //get earnings
+        EditText user_amountWon = (EditText) findViewById(R.id.earningsBet);
+        String amount_Won = user_amountWon.getText().toString();
+
+        //get bet type
+        rgBetType = findViewById(R.id.Group1);
+        int checkedId = rgBetType.getCheckedRadioButtonId();
+
+        //add whether the user has won lost or pending
+
+        findRadioButton(checkedId, user_bet);
+        user_bet.setTeam1(first_team);
+        user_bet.setTeam2(second_team);
+        user_bet.setSportsBook(sports_book);
+        user_bet.setOdds(string_odds);
+        user_bet.setAmount(amount_bet);
+        if(amount_Won.length() == 0){
+            user_bet.setAmountWon("Pending");
+        }
+        else{
+            user_bet.setAmountWon(amount_Won);
+        }
+        user_bet.setWon("Pending");
+
+        Boolean checkupdatedata = DB.updateUserdata(user_bet.getSportsBook(), user_bet.getTeam1(), user_bet.getTeam2(), user_bet.getBetType(), user_bet.getOdds(), user_bet.getAmount(), user_bet.getAmountWon(), user_bet.getWon(), sameKey);
+        if(checkupdatedata == true) {
+            Snackbar snackbar = Snackbar.make(findViewById(R.id.add_bet_activity), "Bet Updated", Snackbar.LENGTH_SHORT);
+            View mView = snackbar.getView();
+            mView.setBackgroundColor(Color.GREEN);
+            TextView mTextView = (TextView) mView.findViewById(com.google.android.material.R.id.snackbar_text);
+            mTextView.setTextColor(Color.BLACK);
+            mTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            snackbar.show();
+        }
     }
 /*
     public void printText(View view) {

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openViewStats() {
-        Intent intent2 = new Intent(this, View_Stats.class);
+        Intent intent2 = new Intent(this, view_stats_listview.class);
         startActivity(intent2);
     }
 }
