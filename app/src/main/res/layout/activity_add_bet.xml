@@ -146,7 +146,8 @@
         app:layout_constraintBottom_toTopOf="@+id/amountBet"
         app:layout_constraintEnd_toEndOf="@+id/betType"
         app:layout_constraintStart_toStartOf="@+id/amountBet"
-        app:layout_constraintTop_toBottomOf="@+id/Group1" />
+        app:layout_constraintTop_toBottomOf="@+id/Group1"
+        android:inputType="numberSigned|numberDecimal"/>
 
     <EditText
         android:id="@+id/amountBet"
@@ -159,7 +160,9 @@
         app:layout_constraintBottom_toTopOf="@+id/Group2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/odds" />
+        app:layout_constraintTop_toBottomOf="@+id/odds"
+        android:inputType="numberDecimal"
+        />
 
     <EditText
         android:id="@+id/earningsBet"
@@ -172,7 +175,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/Group2"
         app:layout_constraintEnd_toStartOf="@+id/Group2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Group2" />
+        app:layout_constraintTop_toTopOf="@+id/Group2"
+        android:inputType="numberSigned|numberDecimal"/>
 
     <EditText
         android:id="@+id/sportsbook"
