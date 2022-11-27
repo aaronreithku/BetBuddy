@@ -19,7 +19,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/sportsbook"
         app:layout_constraintEnd_toEndOf="@+id/sportsbook"
-         />
+        />
 
     <Button
         android:id="@+id/back"
@@ -46,7 +46,7 @@
         app:layout_constraintBottom_toTopOf="@+id/sportsbook"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-         />
+        />
 
     <EditText
         android:id="@+id/teamTwo"
@@ -83,7 +83,7 @@
         app:layout_constraintBottom_toTopOf="@+id/Group1"
         app:layout_constraintStart_toStartOf="@+id/sportsbook"
         app:layout_constraintEnd_toEndOf="@+id/sportsbook"
-         />
+        />
 
     <RadioGroup
         android:id="@+id/Group1"
@@ -142,7 +142,8 @@
         app:layout_constraintBottom_toTopOf="@+id/amountBet"
         app:layout_constraintStart_toStartOf="@+id/sportsbook"
         app:layout_constraintEnd_toEndOf="@+id/sportsbook"
-         />
+        android:inputType="numberDecimal"
+        />
 
     <EditText
         android:id="@+id/amountBet"
@@ -154,7 +155,8 @@
         app:layout_constraintBottom_toTopOf="@+id/earningsBet"
         app:layout_constraintStart_toStartOf="@+id/sportsbook"
         app:layout_constraintEnd_toEndOf="@+id/sportsbook"
-         />
+        android:inputType="numberDecimal"
+        />
 
     <EditText
         android:id="@+id/earningsBet"
@@ -168,7 +170,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintStart_toStartOf="@+id/sportsbook"
         app:layout_constraintEnd_toStartOf="@+id/betWon"
-         />
+        />
 
     <EditText
         android:id="@+id/sportsbook"
@@ -207,7 +209,8 @@
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintStart_toEndOf="@+id/earningsBet"
         app:layout_constraintEnd_toEndOf="@+id/sportsbook"
-         />
+        android:inputType="numberDecimal"
+        />
 
     <TextView
         android:id="@+id/notDone"
