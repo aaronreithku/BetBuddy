@@ -60,7 +60,7 @@ public class bet_list_delete extends AppCompatActivity implements RecyclerViewCl
         Cursor cursor = DB.getUserdata();
         if(cursor.getCount()==0)
         {
-            Toast.makeText(bet_list_delete.this, "No Entry Exists", Toast.LENGTH_SHORT).show();
+            Toast.makeText(bet_list_delete.this, "User has no existing bets", Toast.LENGTH_SHORT).show();
             return;
         }
         else

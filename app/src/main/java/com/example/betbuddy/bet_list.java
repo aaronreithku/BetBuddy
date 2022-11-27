@@ -54,7 +54,7 @@ public class bet_list extends AppCompatActivity implements RecyclerViewClickInte
         Cursor cursor = DB.getUserdata();
         if(cursor.getCount()==0)
         {
-            Toast.makeText(bet_list.this, "No Entry Exists", Toast.LENGTH_SHORT).show();
+            Toast.makeText(bet_list.this, "User has no existing bets", Toast.LENGTH_SHORT).show();
             return;
         }
         else

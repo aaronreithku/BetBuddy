@@ -60,7 +60,7 @@ public class Track_History extends AppCompatActivity {
             public void onClick(View view) {
                 Cursor res = DB.getUserdata();
                 if(res.getCount() == 0){
-                    Toast.makeText(Track_History.this,"No Entry Exists", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Track_History.this,"No Entry Exists", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 StringBuffer buffer = new StringBuffer();
