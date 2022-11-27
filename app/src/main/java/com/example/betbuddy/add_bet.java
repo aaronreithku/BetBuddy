@@ -188,7 +188,7 @@ public class add_bet extends AppCompatActivity {
 
         findRadioButton(checkedId, user_bet);
         user_bet.setTeam1(first_team);
-        user_bet.setTeam1(second_team);
+        user_bet.setTeam2(second_team);
         user_bet.setSportsBook(sports_book);
         user_bet.setOdds(string_odds);
         user_bet.setAmount(amount_bet);

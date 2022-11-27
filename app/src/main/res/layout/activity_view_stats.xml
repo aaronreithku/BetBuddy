@@ -90,17 +90,18 @@
                 android:gravity="center_horizontal"
                 />
         </TableRow>
-        <TextView
-            android:id="@+id/attrib_team1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:padding="10sp"
-            android:textSize="12sp"
-            android:layout_weight="4"
-            android:gravity="center_horizontal"
+       <!-- <TableRow>
+            <TextView
+                android:id="@+id/attrib_team1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:padding="10sp"
+                android:textSize="12sp"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
             />
-
+        </TableRow> -->
     </TableLayout>
 
     <Button
