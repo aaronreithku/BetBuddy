@@ -26,7 +26,9 @@ public class add_bet extends AppCompatActivity {
     private Button ML_button;
     private Button overUnder_button;
     private Button won_button;
+    private Button lost_button;
     RadioGroup rgBetType;
+    RadioGroup rgWon;
     DBHelper DB;
     Boolean updateMode;
     //private int[] checkDoneArray = {1000021, 1000019, 1000004, 1000017, 1000016};
@@ -108,10 +110,13 @@ public class add_bet extends AppCompatActivity {
                 openTrackHistory();
             }
         });
+
         RadioButton won_button = (RadioButton) findViewById(R.id.betWon);
         won_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                calcEarnings();
+                /*
                 if (!won_button.isSelected()) {
                     won_button.setChecked(true);
                     won_button.setSelected(true);
@@ -121,6 +126,20 @@ public class add_bet extends AppCompatActivity {
                     won_button.setSelected(false);
                     EditText text = (EditText) findViewById(R.id.earningsBet);
                     text.setText("");
+                }
+                 */
+            }
+        });
+
+        RadioButton lost_button = (RadioButton) findViewById(R.id.betLost);
+        lost_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText text = (EditText) findViewById(R.id.earningsBet);
+                EditText betAmount = (EditText) findViewById(R.id.amountBet);
+                String amountBet = betAmount.getText().toString();
+                if(amountBet.length() != 0) {
+                    text.setText("-" + amountBet);
                 }
             }
         });
@@ -200,7 +219,7 @@ public class add_bet extends AppCompatActivity {
 
         //get sportsbook from user
         EditText user_book = (EditText) findViewById(R.id.sportsbook);
-        String  sports_book= user_book.getText().toString();
+        String sports_book= user_book.getText().toString();
 
         //get odds from user
         EditText user_odds = (EditText) findViewById(R.id.odds);
@@ -219,8 +238,16 @@ public class add_bet extends AppCompatActivity {
         int checkedId = rgBetType.getCheckedRadioButtonId();
 
         //add whether the user has won lost or pending
+        rgWon = findViewById(R.id.Group2);
+        int checkedIdWon = rgWon.getCheckedRadioButtonId();
 
         findRadioButton(checkedId, user_bet);
+        if(checkedIdWon == -1){
+            user_bet.setWon("Pending");
+        }
+        else{
+            findRadioButtonWon(checkedIdWon, user_bet);
+        }
         user_bet.setTeam1(first_team);
         user_bet.setTeam2(second_team);
         user_bet.setSportsBook(sports_book);
@@ -232,7 +259,6 @@ public class add_bet extends AppCompatActivity {
         else{
             user_bet.setAmountWon(amount_Won);
         }
-        user_bet.setWon("Pending");
 
         Boolean checkinsertdata = DB.insertUserdata(user_bet.getSportsBook(), user_bet.getTeam1(), user_bet.getTeam2(), user_bet.getBetType(), user_bet.getOdds(), user_bet.getAmount(), user_bet.getAmountWon(), user_bet.getWon(), getKey());
         //Storage_System new_system = new Storage_System();
@@ -252,6 +278,19 @@ public class add_bet extends AppCompatActivity {
             case R.id.OverUnder:
                 user_bet.setBetType("O/U");
                 break;
+        }
+    }
+
+    private void findRadioButtonWon(int checkedId, Bet user_bet) {
+        switch (checkedId){
+            case R.id.betWon:
+                user_bet.setWon("Won");
+                break;
+
+            case R.id.betLost:
+                user_bet.setWon("Lost");
+                break;
+
         }
     }
 
@@ -368,6 +407,16 @@ public class add_bet extends AppCompatActivity {
             rgBetType.check(R.id.OverUnder);
         }
 
+        rgWon = findViewById(R.id.Group2);
+        String isWon = cursor.getString(7);
+
+        if(isWon.equals("Won")){
+            rgWon.check(R.id.betWon);
+        }
+        else if(isWon.equals("Lost")){
+            rgWon.check(R.id.betLost);
+        }
+
         text = (EditText) findViewById(R.id.odds);
         text.setText(cursor.getString(4));
 
@@ -415,6 +464,17 @@ public class add_bet extends AppCompatActivity {
         int checkedId = rgBetType.getCheckedRadioButtonId();
 
         //add whether the user has won lost or pending
+        //add whether the user has won lost or pending
+        rgWon = findViewById(R.id.Group2);
+        int checkedIdWon = rgWon.getCheckedRadioButtonId();
+
+        findRadioButton(checkedId, user_bet);
+        if(checkedIdWon == -1){
+            user_bet.setWon("Pending");
+        }
+        else{
+            findRadioButtonWon(checkedIdWon, user_bet);
+        }
 
         findRadioButton(checkedId, user_bet);
         user_bet.setTeam1(first_team);
@@ -428,7 +488,6 @@ public class add_bet extends AppCompatActivity {
         else{
             user_bet.setAmountWon(amount_Won);
         }
-        user_bet.setWon("Pending");
 
         Boolean checkupdatedata = DB.updateUserdata(user_bet.getSportsBook(), user_bet.getTeam1(), user_bet.getTeam2(), user_bet.getBetType(), user_bet.getOdds(), user_bet.getAmount(), user_bet.getAmountWon(), user_bet.getWon(), sameKey);
         if(checkupdatedata == true) {
