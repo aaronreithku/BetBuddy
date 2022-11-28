@@ -358,8 +358,8 @@ public class add_bet extends AppCompatActivity {
         rgBetType = findViewById(R.id.Group1);
         rgBetType.clearCheck();
 
-        RadioButton won_button = (RadioButton) findViewById(R.id.betWon);
-        won_button.setChecked(false);
+        rgWon = findViewById(R.id.Group2);
+        rgWon.clearCheck();
 
         if(updateMode == false) {
             Snackbar snackbar = Snackbar.make(findViewById(R.id.add_bet_activity), "Bet Submitted", Snackbar.LENGTH_SHORT);
