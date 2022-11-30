@@ -173,8 +173,8 @@
 
     <EditText
         android:id="@+id/earningsBet"
-        android:layout_width="236dp"
-        android:layout_height="52dp"
+        android:layout_width="222dp"
+        android:layout_height="57dp"
         android:layout_marginStart="48dp"
         android:layout_marginBottom="11dp"
         android:ems="10"
@@ -184,7 +184,8 @@
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toStartOf="@+id/Group2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Group2" />
+        app:layout_constraintTop_toTopOf="@+id/Group2"
+        app:layout_constraintVertical_bias="0.2" />
 
     <EditText
         android:id="@+id/sportsbook"

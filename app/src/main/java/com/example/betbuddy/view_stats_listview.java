@@ -19,7 +19,7 @@ public class view_stats_listview extends AppCompatActivity {
     Button track_history_button;
     ArrayList<String> amountBet, amountWon, won;
     DBHelper DB;
-    float netEarnings, totalBet, gainPercent, totalEarnings = 0;
+    double netEarnings, totalBet, gainPercent, totalEarnings = 0;
     int betsWon,betsLost, betsPending = 0;
 
 
@@ -51,7 +51,7 @@ public class view_stats_listview extends AppCompatActivity {
         arrayList.add("Bets Lost: " + betsLost);
         arrayList.add("Bets Pending: " + betsPending);
         arrayList.add("Money bet: $" + totalBet);
-        if(netEarnings>=0)
+        if(totalEarnings>=0)
         {
             arrayList.add("Total Earnings: $" + totalEarnings);
         }
@@ -91,7 +91,7 @@ public class view_stats_listview extends AppCompatActivity {
                 netEarnings += Float.parseFloat(amountWon.get(i));
             }
         }
-        netEarnings = (float)(((int)(Math.pow(10,2)*netEarnings))/Math.pow(10,2));
+        netEarnings = Math.round(netEarnings *100.0)/100.0;
 
         //totalEarnings
         for(int i = 0; i < amountWon.size(); i++){
@@ -99,11 +99,11 @@ public class view_stats_listview extends AppCompatActivity {
                 totalEarnings += Float.parseFloat(amountWon.get(i));
             }
         }
-        totalEarnings = (float)(((int)(Math.pow(10,2)*totalEarnings))/Math.pow(10,2));
+        totalEarnings = Math.round(totalEarnings *100.0)/100.0;
 
         //Gain Percentage
         gainPercent = ((netEarnings)/totalBet)*100;
-        gainPercent = (float)(((int)(Math.pow(10,2)*gainPercent))/Math.pow(10,2));
+        gainPercent = Math.round(gainPercent *100.0)/100.0;
 
         //# of bets won and lost
         for(int i = 0; i < won.size(); i++){
